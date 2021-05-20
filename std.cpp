@@ -1,5 +1,16 @@
 #include <bits/stdc++.h>
 using namespace std;
+
+// template type--------------------------------------------------
+int TEMPLATE_TYPE=1;
+// type 0 is coderdorces
+// type 1 is google kickstart
+//----------------------------------------------------------------
+
+
+
+
+
 //[competitive template]------------------------------------------
 #define rep(i, a, b) for (int i = (a), i##_end_ = (b); i < i##_end_; ++i)
 #define debug(...) fprintf(stderr, __VA_ARGS__)
@@ -68,8 +79,7 @@ struct vertex{
 //----------------------------------------------------------------
 
 
-void solve(int n,int k){
-
+void solve(int n){
 
 }
 
@@ -81,10 +91,11 @@ int main(){
    int i=1;
    cin>>t;
    while(t--){
-	cout<<"Case #"<<i++<<": ";
-	cin>>a>>b;
-   	solve(a,b);
+	if(TEMPLATE_TYPE==1) 
+		cout<<"Case #"<<i++<<": ";
+	cin>>a;
+   	solve(a);
+	cout<<"\n";
    }
 }
-
 
