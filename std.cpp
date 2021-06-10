@@ -2,7 +2,7 @@
 using namespace std;
 
 // template type--------------------------------------------------
-int TEMPLATE_TYPE=1;
+int TEMPLATE_TYPE=0;
 // type 0 is coderdorces
 // type 1 is google kickstart
 //----------------------------------------------------------------
@@ -12,9 +12,6 @@ int TEMPLATE_TYPE=1;
 
 
 //[competitive template]------------------------------------------
-#define rep(i, a, b) for (int i = (a), i##_end_ = (b); i < i##_end_; ++i)
-#define debug(...) fprintf(stderr, __VA_ARGS__)
-
 #define mp make_pair
 #define mv make_vector
 	#define s size
@@ -23,22 +20,51 @@ int TEMPLATE_TYPE=1;
 #define x first
 #define y second
 #define pb push_back
-#define SZ(x) (int((x).size()))
-#define ALL(x) (x).begin(), (x).end()
+typedef long long ll;
 
-template<typename T> inline bool chkmin(T &a, const T &b) { return a > b ? a = b, 1 : 0; }
-template<typename T> inline bool chkmax(T &a, const T &b) { return a < b ? a = b, 1 : 0; }
-template<typename T> inline bool smin(T &a, const T &b)   { return a > b ? a = b : a;    }
-template<typename T> inline bool smax(T &a, const T &b)   { return a < b ? a = b : a;    }
 
-typedef long long LL;
+int numDigits(int32_t x)
+{
+    if (x == INT_MIN) return 10 + 1;
+    if (x < 0) return numDigits(-x) + 1;
 
+    if (x >= 10000) {
+        if (x >= 10000000) {
+            if (x >= 100000000) {
+                if (x >= 1000000000)
+                    return 10;
+                return 9;
+            }
+            return 8;
+        }
+        if (x >= 100000) {
+            if (x >= 1000000)
+                return 7;
+            return 6;
+        }
+        return 5;
+    }
+    if (x >= 100) {
+        if (x >= 1000)
+            return 4;
+        return 3;
+    }
+    if (x >= 10)
+        return 2;
+    return 1;
+}
 vector <int> make_vector(int x){
 	vector <int> v;
 	v.push_back(x);
 	return v;
 }
-
+void _no_itr_print_1d_vector(vector <int> v){
+	cout<<"\n";
+	for(int i=0;i<v.size();i++){
+		cout<<"\t "<<v[i];
+	}
+	cout<<"\n";
+}
 void print_1d_vector(vector <int> v){
 	cout<<"\n";
 	for(int i=0;i<v.size();i++){
@@ -71,11 +97,14 @@ int _2d_sum(vector< vector <int> > v){
 
 const bool debug = true;
 
-struct vertex{
-	int num;
-	int dist;
-	int prev;
-};
+vector<int> c_bin(int n) {
+    vector<int> r;
+    while(n!=0) {
+	    r.pb(n%2==0 ?0:1); 
+	    n/=2;
+    }
+    return r;
+}
 //----------------------------------------------------------------
 
 
