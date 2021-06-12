@@ -7,6 +7,9 @@ int TEMPLATE_TYPE=0;
 // type 1 is google kickstart
 //----------------------------------------------------------------
 
+//Time profile----------------------------------------------------
+bool time_profile=false;
+//----------------------------------------------------------------
 
 
 
@@ -107,24 +110,41 @@ vector<int> c_bin(int n) {
 }
 //----------------------------------------------------------------
 
-
-void solve(int n){
-
+void solve(){
 }
 
 
 int main(){
    ios_base::sync_with_stdio(false);
    cin.tie(NULL);   	
-   int t,a,b,c;
+   int t;
+   double total=0;
    int i=1;
    cin>>t;
+   if(time_profile){
+   std::chrono::time_point<std::chrono::system_clock> start, end;
    while(t--){
 	if(TEMPLATE_TYPE==1) 
 		cout<<"Case #"<<i++<<": ";
-	cin>>a;
-   	solve(a);
+        start = std::chrono::system_clock::now();
+   	solve();
+	end = std::chrono::system_clock::now();
+	 
+       	std::chrono::duration<double> elapsed_seconds = end - start;
+	total+=elapsed_seconds.count();
+    	std::time_t end_time = std::chrono::system_clock::to_time_t(end);
+  
+		std::cout <<"\nelapsed time: " << elapsed_seconds.count() << "s\n";
+		cout<<"\n";
+   	}
+   	cout<<"\n TOTAL TIME\t"<<total;
+   } else {
+   	while(t--){
+	if(TEMPLATE_TYPE==1) 
+		cout<<"Case #"<<i++<<": ";
+   	solve();
 	cout<<"\n";
+   }
    }
 }
 
